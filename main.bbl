@@ -1,0 +1,45 @@
+\begin{thebibliography}{}
+
+\bibitem[Heider, 2021]{heider2021review}
+Heider, Y. (2021).
+\newblock A review on phase-field modeling of hydraulic fracturing.
+\newblock {\em Engineering Fracture Mechanics}, 253:107881.
+
+\bibitem[Lee et~al., 2017]{lee2017iterative}
+Lee, S., Wheeler, M.~F., and Wick, T. (2017).
+\newblock Iterative coupling of flow, geomechanics and adaptive phase-field
+  fracture including level-set crack width approaches.
+\newblock {\em Journal of Computational and Applied Mathematics}, 314:40--60.
+
+\bibitem[Miehe et~al., 2015]{miehe2015minimization}
+Miehe, C., Mauthe, S., and Teichtmeister, S. (2015).
+\newblock Minimization principles for the coupled problem of darcy--biot-type
+  fluid transport in porous media linked to phase field modeling of fracture.
+\newblock {\em Journal of the Mechanics and Physics of Solids}, 82:186--217.
+
+\bibitem[Verhoosel and de~Borst, 2013]{verhoosel2013phase}
+Verhoosel, C.~V. and de~Borst, R. (2013).
+\newblock A phase-field model for cohesive fracture.
+\newblock {\em International Journal for numerical methods in Engineering},
+  96(1):43--62.
+
+\bibitem[Wilson and Landis, 2016]{wilson2016phase}
+Wilson, Z.~A. and Landis, C.~M. (2016).
+\newblock Phase-field modeling of hydraulic fracture.
+\newblock {\em Journal of the Mechanics and Physics of Solids}, 96:264--290.
+
+\bibitem[Yoshioka and Bourdin, 2016]{yoshioka2016variational}
+Yoshioka, K. and Bourdin, B. (2016).
+\newblock A variational hydraulic fracturing model coupled to a reservoir
+  simulator.
+\newblock {\em International Journal of Rock Mechanics and Mining Sciences},
+  88:137--150.
+
+\bibitem[Yoshioka et~al., 2020]{yoshioka2020crack}
+Yoshioka, K., Naumov, D., and Kolditz, O. (2020).
+\newblock On crack opening computation in variational phase-field models for
+  fracture.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  369:113210.
+
+\end{thebibliography}

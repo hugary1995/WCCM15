@@ -1,0 +1,80 @@
+\section{Introduction}
+
+\sectioncover
+
+\subsection{Motivation}
+
+\begin{frame}
+    \begin{itemize}
+        \setlength\itemsep{2pt}
+        \item The jump over a discontinuity is an important quantity in many physics:
+              \begin{itemize}
+                  \setlength\itemsep{2pt}
+                  \item \textbf{Cohesive fracture}: traction-separation law;
+                  \item \textbf{Hydraulic fracturing}: crack-open-displacement(COD)-dependent anisotropic permeability;
+                  \item \textbf{Thermal contact}: COD-dependent thermal conductivity, temperature-jump-dependent heat flux;
+                  \item \textbf{Electrostatics}: current flow across separators;
+                  \item ...
+              \end{itemize}
+        \item<2-> With \textcolor{blue}{sharp cracks}, computing the jump involves a geometric search.
+        \item<3-> With \textcolor{blue}{regularized cracks}, estimating the jump has proven to be less straightforward.
+            \begin{itemize}
+                \setlength\itemsep{2pt}
+                \item There is no definition of \textcolor{blue}{topological neighbor} across the regularized interface.
+                \item<4-> Broadcasting the jump estimation across the phase field band is inherently a \textcolor{blue}{nonlocal process}.
+            \end{itemize}
+    \end{itemize}
+    \hspace{20pt}
+    \begin{tikzpicture}[scale=1.5,visible on=<2->]
+        \draw (0,0) -- (1,0.1);
+        \draw (0,0) -- (1,-0.1);
+        \draw plot[smooth] coordinates {(1,0.1) (0.8,0.5) (0,0.9) (-0.5,0.8) (-1,0) (-0.8,-0.3) (-0.5,-0.5) (-0.3,-0.7) (0,-0.8) (0.3,-0.8) (0.7,-0.6) (1,-0.1)};
+        \node[circle,fill=black,inner sep=0pt,minimum size=3pt] at (0.7,0.07) {};
+        \draw (0.7,0.07) node[above] {$u^+$};
+        \node[circle,fill=black,inner sep=0pt,minimum size=3pt] at (0.7,-0.07) {};
+        \draw (0.7,-0.07) node[below] {$u^-$};
+    \end{tikzpicture}
+    \hspace{25pt}
+    \begin{tikzpicture}[scale=1.5,visible on=<3->]
+        \draw[name path=a,opacity=0] (0,0) -- (1,0.1);
+        \draw[name path=b,opacity=0] (0,0) -- (1,-0.1);
+        \tikzfillbetween[of=a and b]{fill=gray!20};
+        \draw (1,0.1) -- (1,-0.1);
+        \draw plot[smooth] coordinates {(1,0.1) (0.8,0.5) (0,0.9) (-0.5,0.8) (-1,0) (-0.8,-0.3) (-0.5,-0.5) (-0.3,-0.7) (0,-0.8) (0.3,-0.8) (0.7,-0.6) (1,-0.1)};
+    \end{tikzpicture}
+    \hspace{25pt}
+    \begin{tikzpicture}[visible on=<4->]
+        \draw[->] (0, 0) -- (4, 0) node[right] {$x$};
+        \draw[->] (0, 0) -- (0, 2) node[above] {$u$, \textcolor{red}{$d$}};
+        \draw[domain=1:2, smooth, variable=\x, red] plot ({\x}, {2*(\x-1)^2});
+        \draw[domain=2:3, smooth, variable=\x, red] plot ({\x}, {2*(3-\x)^2});
+        \draw (0,0.5) -- (2,0.5);
+        \draw (2,0.5) -- (2,1.5);
+        \draw (2,1.5) -- (4,1.5);
+    \end{tikzpicture}
+\end{frame}
+
+\subsection{State-of-the-art techniques}
+
+\begin{frame}
+    There is a very recent review: \cite{heider2021review}
+
+    \bigskip
+
+    \begin{itemize}
+        \setlength\itemsep{1em}
+        \item<1-> \cite{miehe2015minimization,wilson2016phase}: Purely \textcolor{blue}{local} approach based on the stretch of the element, $\abs{\jump{\bfu}\cdot\bfn} = \abs{h_e (1+\bfn\cdot\bs{\varepsilon}\bfn)}$.
+        \item<2-> \cite{verhoosel2013phase}: Constructing an \textcolor{blue}{auxliary displacement jump field}, $\jump{\bfu} \approx \int_{-\infty}^\infty \bfv \delta_l \diff{x_n} $.
+        \item<3-> \cite{yoshioka2016variational}: \textcolor{blue}{Line integral} over an infinite domain, $\jump{\bfu}\cdot\bfn = \int_{-\infty}^\infty \bfu \cdot \bfn \norm{\grad d} \diff{s}$.
+        \item<4-> \cite{lee2017iterative}: Constructing a \textcolor{blue}{levelset} to help interpolate COD, $\divergence \grad \varphi + b = 0$, $\jump{u}\cdot\bfn \approx 2 \bfu \cdot \bfn_\varphi$
+        \item<5-> \cite{yoshioka2020crack}:
+            \begin{itemize}
+                \item Line integral along line elements.
+                \item Constructing a levelset and sum the COD at the intersections of the levelset and the crack normal.
+            \end{itemize}
+    \end{itemize}
+
+    \bigskip
+
+    \only<6->{Our proposed method is a direct extension of \cite{verhoosel2013phase}.}
+\end{frame}
